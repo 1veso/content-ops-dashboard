@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export default function AuthWrapper({ children }: { children: ReactNode }) {
   const {
@@ -28,23 +28,46 @@ export default function AuthWrapper({ children }: { children: ReactNode }) {
 
   if (!isAuthenticated) {
     return (
-      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#050608', color: '#e8edf2', fontFamily: 'JetBrains Mono, monospace' }}>
-        <div style={{ padding: '40px', background: '#0a0c0f', border: '1px solid rgba(0,229,212,0.1)', borderRadius: '8px', textAlign: 'center' }}>
-          <h2 style={{ color: '#00e5d4', marginBottom: '20px', fontFamily: 'Barlow Condensed, sans-serif', fontSize: '32px', letterSpacing: '2px' }}>AURION AUTH</h2>
-          <p style={{ fontSize: '12px', color: 'rgba(232,237,242,0.4)', marginBottom: '24px' }}>Please login or sign up to access Mission Control</p>
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#050608', color: '#e8edf2', fontFamily: 'JetBrains Mono, monospace', position: 'relative' }}>
+        
+        {/* Ambient Cyan Glows */}
+        <div style={{ position: 'absolute', width: '400px', height: '400px', background: 'radial-gradient(ellipse, rgba(0,229,212,0.1) 0%, transparent 60%)', filter: 'blur(40px)', pointerEvents: 'none' }} />
+        
+        <div style={{ 
+          position: 'relative',
+          padding: '60px 50px', 
+          background: 'rgba(10, 12, 15, 0.4)', 
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          border: '1px solid rgba(0,229,212,0.3)', 
+          borderRadius: '16px', 
+          textAlign: 'center',
+          boxShadow: '0 0 60px rgba(0,229,212,0.1), inset 0 0 20px rgba(0,229,212,0.05)'
+        }}>
+          <h2 style={{ 
+            color: '#00e5d4', 
+            marginBottom: '16px', 
+            fontFamily: 'Barlow Condensed, sans-serif', 
+            fontSize: '38px', 
+            letterSpacing: '3px',
+            textShadow: '0 0 20px rgba(0,229,212,0.6)'
+          }}>AUTOMATA <span>OPS</span> Auth</h2>
+          <p style={{ fontSize: '13px', color: 'rgba(232,237,242,0.6)', marginBottom: '32px', letterSpacing: '0.5px' }}>
+            // secure proxy connection required
+          </p>
           
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
             <button 
               onClick={() => loginWithRedirect({ authorizationParams: { screen_hint: "signup" } })}
-              style={{ padding: '10px 24px', background: 'transparent', color: '#00e5d4', border: '1px solid rgba(0,229,212,0.4)', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
+              style={{ padding: '12px 28px', background: 'rgba(0,229,212,0.05)', color: '#00e5d4', border: '1px solid rgba(0,229,212,0.4)', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', transition: 'all 0.2s', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '11px', boxShadow: '0 0 10px rgba(0,229,212,0.05)' }}
             >
               Sign up
             </button>
             <button 
               onClick={() => loginWithRedirect()}
-              style={{ padding: '10px 24px', background: '#00e5d4', color: '#050608', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
+              style={{ padding: '12px 28px', background: '#00e5d4', color: '#050608', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', transition: 'all 0.2s', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '11px', boxShadow: '0 0 20px rgba(0,229,212,0.4)' }}
             >
-              Login
+              Initialize Login
             </button>
           </div>
         </div>

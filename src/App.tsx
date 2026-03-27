@@ -31,7 +31,7 @@ function App() {
       msg: 'Manual trigger from Dashboard launched by ' + (user?.name || 'Admin'),
       colorClass: 'info'
     }]);
-    
+
     // reset after 5s
     setTimeout(() => setWfActive(false), 5000);
   };
@@ -58,8 +58,8 @@ function App() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginRight: '20px' }}>
             <User size={14} color="var(--cyan)" />
             <span>{user?.email}</span>
-            <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} style={{ background: 'transparent', border: 'none', color: 'var(--red)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap:'4px' }}>
-               <LogOut size={12} /> Exfil
+            <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} style={{ background: 'transparent', border: 'none', color: 'var(--red)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <LogOut size={12} /> Exfil
             </button>
           </div>
           <div className="status-pill">
@@ -98,7 +98,7 @@ function App() {
       {/* MAIN CONTENT */}
       <main className="main">
         <div className="content">
-          
+
           <div className="page-header">
             <div>
               <div className="page-title">CONTENT <span>OPS</span></div>
@@ -138,8 +138,8 @@ function App() {
             <div className="panel-header">
               <div className="panel-title">LIVE KANBAN PIPELINE</div>
               <div className="tabs">
-                 <div className={`tab ${pipelineFilter === 'all' && 'active'}`} onClick={() => setPipelineFilter('all')}>All</div>
-                 <div className={`tab ${pipelineFilter === 'mine' && 'active'}`} onClick={() => setPipelineFilter('mine')}>Mine</div>
+                <div className={`tab ${pipelineFilter === 'all' && 'active'}`} onClick={() => setPipelineFilter('all')}>All</div>
+                <div className={`tab ${pipelineFilter === 'mine' && 'active'}`} onClick={() => setPipelineFilter('mine')}>Mine</div>
               </div>
             </div>
             <div className="pipeline">
@@ -149,13 +149,13 @@ function App() {
                   <span className="card-priority priority-high"></span>
                   <span className="content-card-tag tag-trend">#sealsaltspray</span>
                   <div className="content-card-title">2.1M views, rising</div>
-                  <div className="content-card-meta"><span>6h ago</span><span style={{color: 'var(--cyan)'}}>94 score</span></div>
+                  <div className="content-card-meta"><span>6h ago</span><span style={{ color: 'var(--cyan)' }}>94 score</span></div>
                 </motion.div>
                 <div className="content-card">
                   <span className="card-priority priority-mid"></span>
                   <span className="content-card-tag tag-trend">#permhair</span>
                   <div className="content-card-title">low comp, high ENG</div>
-                  <div className="content-card-meta"><span>1h ago</span><span style={{color: 'var(--cyan)'}}>71 score</span></div>
+                  <div className="content-card-meta"><span>1h ago</span><span style={{ color: 'var(--cyan)' }}>71 score</span></div>
                 </div>
               </div>
               <div className="pipeline-stage">
@@ -176,8 +176,8 @@ function App() {
                 </div>
               </div>
               <div className="pipeline-stage">
-                 <div className="stage-header">Filmed <span className="stage-count">1</span></div>
-                 <div className="content-card">
+                <div className="stage-header">Filmed <span className="stage-count">1</span></div>
+                <div className="content-card">
                   <span className="content-card-tag tag-filmed">FILMED</span>
                   <div className="content-card-title">"Sea salt vs every other spray"</div>
                   <div className="content-card-meta"><span>Ready</span><span>↑ queue</span></div>
@@ -188,7 +188,7 @@ function App() {
                 <div className="content-card">
                   <span className="content-card-tag tag-live">POSTED</span>
                   <div className="content-card-title">"Why I made sea salt spray at 19"</div>
-                  <div className="content-card-meta"><span>142K views</span><span style={{color: 'var(--cyan)'}}>OUTLIER</span></div>
+                  <div className="content-card-meta"><span>142K views</span><span style={{ color: 'var(--cyan)' }}>OUTLIER</span></div>
                 </div>
               </div>
             </div>
@@ -196,51 +196,51 @@ function App() {
 
           <div className="two-col">
             <div className="pipeline-panel">
-               <div className="panel-header">
+              <div className="panel-header">
                 <div className="panel-title">PIPELINE GRAPH</div>
                 <span className={`panel-pill ${wfActive ? 'badge-active' : 'pill-active'}`}>
-                   {wfActive ? 'RUNNING' : 'LIVE'}
+                  {wfActive ? 'RUNNING' : 'LIVE'}
                 </span>
-               </div>
-               <div className="node-canvas">
-                 <div className="node-row">
-                    <motion.div animate={wfActive ? { scale: [1, 1.05, 1] } : {}} transition={{ repeat: Infinity, duration: 2 }} className={`node ${wfActive ? 'active' : 'done'}`}>
-                      <div className="node-box">
-                        <MonitorPlay className="node-icon" size={24} color={wfActive ? 'var(--cyan)' : 'var(--green)'} />
-                        <div className="node-label">Apify</div>
-                      </div>
-                    </motion.div>
-                    
-                    <motion.div animate={wfActive ? { y: [-2, 2, -2] } : {}} transition={{ repeat: Infinity, duration: 2, delay: 0.5 }} className={`node ${wfActive ? 'active' : 'idle'}`}>
-                      <div className="node-box">
-                        <Activity className="node-icon" size={24} color={wfActive ? 'var(--cyan)' : 'var(--amber)'} />
-                        <div className="node-label">Claude</div>
-                      </div>
-                    </motion.div>
-
-                    <div className="node idle">
-                      <div className="node-box">
-                        <MonitorPlay className="node-icon" size={24} color="var(--amber)" />
-                        <div className="node-label">Render</div>
-                      </div>
+              </div>
+              <div className="node-canvas">
+                <div className="node-row">
+                  <motion.div animate={wfActive ? { scale: [1, 1.05, 1] } : {}} transition={{ repeat: Infinity, duration: 2 }} className={`node ${wfActive ? 'active' : 'done'}`}>
+                    <div className="node-box">
+                      <MonitorPlay className="node-icon" size={24} color={wfActive ? 'var(--cyan)' : 'var(--green)'} />
+                      <div className="node-label">Apify</div>
                     </div>
-                 </div>
-               </div>
+                  </motion.div>
+
+                  <motion.div animate={wfActive ? { y: [-2, 2, -2] } : {}} transition={{ repeat: Infinity, duration: 2, delay: 0.5 }} className={`node ${wfActive ? 'active' : 'idle'}`}>
+                    <div className="node-box">
+                      <Activity className="node-icon" size={24} color={wfActive ? 'var(--cyan)' : 'var(--amber)'} />
+                      <div className="node-label">Claude</div>
+                    </div>
+                  </motion.div>
+
+                  <div className="node idle">
+                    <div className="node-box">
+                      <MonitorPlay className="node-icon" size={24} color="var(--amber)" />
+                      <div className="node-label">Render</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="pipeline-panel">
               <div className="panel-header">
                 <div className="panel-title">LIVE TREND FEED</div>
-                <button className="btn btn-outline" style={{padding: '4px 10px', fontSize:'9px'}}>↻ Sync</button>
+                <button className="btn btn-outline" style={{ padding: '4px 10px', fontSize: '9px' }}>↻ Sync</button>
               </div>
-              <div style={{padding: '0 20px'}}>
+              <div style={{ padding: '0 20px' }}>
                 <div className="trend-item">
                   <div className="trend-rank hot">01</div>
                   <div className="trend-info">
                     <div className="trend-hashtag">#sealsaltspray</div>
                     <div className="trend-stats"><span>2.1M views</span><span>4.8% ENG</span></div>
                   </div>
-                  <div className="trend-action"><ArrowRight size={12}/> Script</div>
+                  <div className="trend-action"><ArrowRight size={12} /> Script</div>
                 </div>
                 <div className="trend-item">
                   <div className="trend-rank hot">02</div>
@@ -248,12 +248,12 @@ function App() {
                     <div className="trend-hashtag">#looksmaxxing</div>
                     <div className="trend-stats"><span>3.4M views</span><span>3.1% ENG</span></div>
                   </div>
-                  <div className="trend-action"><ArrowRight size={12}/></div>
+                  <div className="trend-action"><ArrowRight size={12} /></div>
                 </div>
               </div>
             </div>
           </div>
-          
+
         </div>
       </main>
     </div>
